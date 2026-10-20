@@ -38,22 +38,21 @@ function createTodoElement(todo) {
 
 function renderTodos() {
     todoList.innerHTML = ''; 
-    todos.forEach((todo, index) => {
+    todos.forEach((todo) => {
         const li = createTodoElement(todo);
         todoList.appendChild(li);
     });
 }
 
-// Add todo
+
 function addTodo() {
     const inputText = todoInput.value.trim(); 
 
-  
     if (inputText !== "") {
-          const newTodo = {
-        id: Date.now(), 
-        text: inputText
-    };
+        const newTodo = {
+            id: Date.now(), 
+            text: inputText
+        };
 
         todos.push(newTodo);
         todoInput.value = ""; 
@@ -61,7 +60,6 @@ function addTodo() {
     }
 }
 
-// Delete todo
 function deleteTodo(id) {
     todos = todos.filter((todo) => todo.id !== id);
     renderTodos();
