@@ -4,12 +4,11 @@ let todos = [
     {id: 3, text: "Master DOM manipulation"}
 ];
 
-
 const todolist = document.getElementById("todo-list");
 const todoInput = document.getElementById("todo-input");
 const addButton = document.getElementById("add-button");
 
-// Create todo item element
+
 function createTodoElement(todo) { 
     const li = document.createElement("li"); 
     li.classList.add("todo-item"); 
@@ -30,7 +29,6 @@ function createTodoElement(todo) {
 
 }
 
-// Render todos
 function renderTodos() {
     todoList.innerHTML = ''; 
     todos.forEach((todo, index) => {
@@ -41,6 +39,8 @@ function renderTodos() {
 
 // Add todo
 function addTodo() {
+    inputText = todoInput.value.trim(); 
+
     // TODO: Implement this function
     // 1. Get the text from the input field
     // 2. If the text is not empty:
