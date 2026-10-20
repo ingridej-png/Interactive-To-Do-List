@@ -4,9 +4,16 @@ let todos = [
     {id: 3, text: "Master DOM manipulation"}
 ];
 
-const todolist = document.getElementById("todo-list");
+const todoList = document.getElementById("todo-list");
 const todoInput = document.getElementById("todo-input");
+
 const addButton = document.getElementById("add-button");
+addButton.addEventListener("click", addTodo);
+todoInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        addTodo();
+    }
+});
 
 
 function createTodoElement(todo) { 
@@ -39,28 +46,27 @@ function renderTodos() {
 
 // Add todo
 function addTodo() {
-    inputText = todoInput.value.trim(); 
+    const inputText = todoInput.value.trim(); 
 
-    // TODO: Implement this function
-    // 1. Get the text from the input field
-    // 2. If the text is not empty:
-    //    a. Create a new todo object with a unique id and the input text
-    //    b. Add the new todo object to the todos array
-    //    c. Clear the input field
-    //    d. Call renderTodos() to update the display
+  
+    if (inputText !== "") {
+          const newTodo = {
+        id: Date.now(), 
+        text: inputText
+    };
+
+        todos.push(newTodo);
+        todoInput.value = ""; 
+        renderTodos(); 
+    }
 }
 
 // Delete todo
 function deleteTodo(id) {
-    // TODO: Implement this function
-    // 1. Remove the todo with the given id from the todos array
-    // 2. Call renderTodos() to update the display
+    todos = todos.filter((todo) => todo.id !== id);
+    renderTodos();
 }
 
-// TODO: Add a click event listener to the add button that calls addTodo
 
-// TODO: Add a keypress event listener to the input field 
-// that calls addTodo when the Enter key is pressed
 
-// Initial render
 renderTodos();
