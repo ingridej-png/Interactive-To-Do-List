@@ -32,10 +32,11 @@ function createTodoElement(todo) {
 
 // Render todos
 function renderTodos() {
-    // TODO: Implement this function
-    // 1. Clear the existing list
-    // 2. Loop through the todos array
-    // 3. For each todo, call createTodoElement(todo) and append the result to the todo list
+    todoList.innerHTML = ''; 
+    todos.forEach((todo, index) => {
+        const li = createTodoElement(todo);
+        todoList.appendChild(li);
+    });
 }
 
 // Add todo
