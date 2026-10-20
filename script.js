@@ -4,22 +4,30 @@ let todos = [
     {id: 3, text: "Master DOM manipulation"}
 ];
 
-// TODO: Select and store references to the necessary DOM elements:
-// - todoList: the <ul> element to contain the todo items
-// - todoInput: the input field for new todos
-// - addButton: the button to add new todos
+
+const todolist = document.getElementById("todo-list");
+const todoInput = document.getElementById("todo-input");
+const addButton = document.getElementById("add-button");
 
 // Create todo item element
-function createTodoElement(todo) {
-    // TODO: Implement this function
-    // 1. Create a new <li> element
-    // 2. Add the 'todo-item' class to the <li>
-    // 3. Create a <span> for the todo text
-    // 4. Set the span's text content to todo.text
-    // 5. Create a delete button
-    // 6. Add a click event listener to the delete button that calls deleteTodo(todo.id)
-    // 7. Append the span and delete button to the <li>
-    // 8. Return the <li> element
+function createTodoElement(todo) { 
+    const li = document.createElement("li"); 
+    li.classList.add("todo-item"); 
+
+    const span = document.createElement("span");
+    span.classList.add("todo-text");
+    span.textContent = todo.text;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => deleteTodo(todo.id));
+
+    li.appendChild(span);
+    li.appendChild(deleteButton);
+    
+    return li; 
+
 }
 
 // Render todos
